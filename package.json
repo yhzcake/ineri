@@ -1,0 +1,25 @@
+{
+  "name": "ineri",
+  "displayName": "ineri",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "ineri",
+      "aliases": ["ineri", "ineri"],
+      "extensions": [".ineri"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "ineri",
+      "scopeName": "source.ineri",
+      "path": "./syntaxes/ineri.tmLanguage.json"
+    }]
+  }
+}

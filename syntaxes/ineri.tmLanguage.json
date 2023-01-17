@@ -1,0 +1,84 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "ineri",
+    "patterns": [
+        {
+            "include": "#comment"
+        },
+		{
+			"include": "#constant"
+		},
+		{
+			"include": "#keyword"
+		},
+		{
+			"include": "#storage"
+		}
+    ],
+    "repository": {
+        "comment":{
+            "patterns": [
+                {
+                    "name":"comment.line",
+                    "begin": "\\#",
+                    "end":"\\n"
+                }
+            ]
+        },
+		"constant":{
+			"patterns": [
+				{
+					"name":"storage.type.java",
+					"begin": "int\\(",
+					"end":"\\)|\\[",
+					"patterns": [
+						{
+							"name":"constant.numeric.integer",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name":"constant.character.escape",
+					"match": "\\\\+[a-z]?(x|X|[0-9]|[a-f]|[A-F]){0,4}"
+				}
+			]
+		},
+		"keyword":{
+			"patterns": [
+				{
+					"name":"keyword.control",
+					"match": "\\b(if)\\b"
+				},
+				{
+					"name":"keyword.declaration.function",
+					"begin": "def ",
+					"end":"{",
+					"patterns": [
+						{
+							"name":"storage.type.function",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name":"keyword.other",
+					"match": "\\b(new)\\b"
+				},
+				{
+					"name":"keyword.operator.arithmetic",
+					"match": "(\\+|-|\\*|/|%|\\^|=|\\+=|-=)"
+				},
+				{
+					"name":"keyword.operator.logical",
+					"match": "(==|<|>|>=|<=|!=|&|\\||\\?|\\$)"
+				},
+				{
+					"name":"keyword.operator.word",
+					"match": " (and|or|not) "
+				}
+			]
+		}
+    },
+	"scopeName": "source.ineri"
+}
