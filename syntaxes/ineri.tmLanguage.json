@@ -12,7 +12,23 @@
 			"include": "#keyword"
 		},
 		{
-			"include": "#storage"
+			"include": "#string"
+		},
+		{
+			"comment": "number",
+			"name":"variable.parameter",
+			"match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)([LlFfUuDdstST]|UL|ul)?\\b"
+		},
+		{
+			"comment": "args",
+			"name":"entity.name.section",
+			"match": "\\b(selector|var|mode|json|text|color|callback|time|areas|chances|vars|scoreboard)\\b"
+		},
+		{
+			"comment": "selector",
+			"name":"variable.other",
+			"begin": "(\\$|\\?)",
+			"end": "(\\))"
 		}
     ],
     "repository": {
@@ -39,8 +55,8 @@
 					]
 				},
 				{
-					"name":"constant.character.escape",
-					"match": "\\\\+[a-z]?(x|X|[0-9]|[a-f]|[A-F]){0,4}"
+					"name":"storage.type.java",
+					"match": "(true|false)"
 				}
 			]
 		},
@@ -48,7 +64,7 @@
 			"patterns": [
 				{
 					"name":"keyword.control",
-					"match": "\\b(if)\\b"
+					"match": "\\b(if|else|for)\\b"
 				},
 				{
 					"name":"keyword.declaration.function",
@@ -63,7 +79,7 @@
 				},
 				{
 					"name":"keyword.other",
-					"match": "\\b(new)\\b"
+					"match": "\\b(new|wait)\\b"
 				},
 				{
 					"name":"keyword.operator.arithmetic",
@@ -71,11 +87,48 @@
 				},
 				{
 					"name":"keyword.operator.logical",
-					"match": "(==|<|>|>=|<=|!=|&|\\||\\?|\\$)"
+					"match": "(==|<|>|>=|<=|!=|&|\\|)"
 				},
 				{
 					"name":"keyword.operator.word",
 					"match": " (and|or|not) "
+				}
+			]
+		},
+		"string":{
+			"patterns": [
+				{
+					"name":"string.quoted.single",
+					"begin": "'",
+					"end":"'",
+					"patterns": [
+						{
+							"name":"constant.character.escape",
+							"match": "\\\\+[a-z]?(x|X|[0-9]|[a-f]|[A-F]){0,4}"
+						}
+					]
+				},
+				{
+					"name":"string.quoted.double",
+					"begin": "\"",
+					"end":"\"",
+					"patterns": [
+						{
+							"name":"constant.character.escape",
+							"match": "\\\\+[a-z]?(x|X|[0-9]|[a-f]|[A-F]){0,4}"
+						}
+					]
+				},
+				{
+					"name":"string.quoted.triple",
+					"begin": "(\"\"\"|''')",
+					"end":"(\"\"\"|''')",
+					"patterns": [
+						{
+							"name":"constant.character.escape",
+							"match": "\\\\+[a-z]?(x|X|[0-9]|[a-f]|[A-F]){0,4}"
+						}
+					]
 				}
 			]
 		}
